@@ -42,6 +42,6 @@ if __name__ == "__main__":
     my_list: list[int]
 
     print("Called directly. Running tests...")
-    my_list = [i + 1 for i in range(5)]
+    my_list = [i for i in range(1, 6)]
     print(sum_list(my_list))
     print(prod_list(my_list))
