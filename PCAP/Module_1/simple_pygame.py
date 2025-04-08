@@ -2,20 +2,30 @@ import pygame
 
 
 def setup_screen() -> None:
-    width: int = 400
-    height: int = 100
-    font: pygame.font.Font
+    height: int
+    width: int
+    height_margin: int
+    width_margin: int
     screen: pygame.Surface
-    white: tuple[int, int, int] = (255, 255, 255)
     text: pygame.Surface
 
+    width = 400
+    height = 100
     screen = pygame.display.set_mode((width, height))
-    font = pygame.font.SysFont(None, 48)
-    text = font.render("Welcome to pygame", True, white)
-    screen.blit(
-        text, ((width - text.get_width()) // 2, (height - text.get_height()) // 2)
-    )
+    text = setup_text()
+    width_margin = (width - text.get_width()) // 2
+    height_margin = (height - text.get_height()) // 2
+    screen.blit(text, (width_margin, height_margin))
     pygame.display.flip()
+
+
+def setup_text() -> pygame.Surface:
+    font: pygame.font.Font
+    white: tuple[int, int, int]
+
+    font = pygame.font.SysFont(None, 48)
+    white = (255, 255, 255)
+    return font.render("Welcome to pygame", True, white)
 
 
 def main() -> None:
